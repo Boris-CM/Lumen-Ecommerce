@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<%- include('./partials/head') %>
+<!-- LUMEN Lights Shop -->
+<body>
+    <!-- HEADER -->
+    <%- include('./partials/header') %>
+    <main>
+        <section class="home__img">
+            <img src="/img/img2.jpeg" alt="Imágen bienvenida" class="home__img__img">
+            <!-- <img src="/img/chand.jpg" alt="Imágen bienvenida" class="home__img__img"> -->
+        </section>
+        <section class="review" id="us">
+            <article class="review__txt">
+                <h1>LUMEN Lights Shop</h1>
+                <p>
+                    <strong>LUMEN</strong> es una tienda online, dedicada a ofrecerte <br>
+                    productos de iluminación de diseño único y exclusivo,<br>
+                    para acondicionar tus espacios de la manera más original.<br>
+                    Podés encontrar amplia variedad para todo tipo de ambiente.
+                </p>
+            </article>
+            
+            <article class="review__img">
+                <!-- <img src="/img/luces.jpeg" alt="Luces" class="review__img__img"> -->
+                <video autoplay muted loop class="review__img__img">
+                    <source src="/img/videohome.mp4" type="video/mp4">
+                    <!-- <source src="/img/videohomefil.mp4" type="video/mp4"> -->
+                </video>
+            </article>
+        </section>
+
+        <section class="shop">
+            <article class="shop__top">
+                <h3>Techo</h3>
+                <a href="/product/gallery/techo"><img src="/img/techo.jpeg" alt="Lámparas de techo" id="top"></a>
+            </article> 
+            <div class="wall-floor">
+                <article class="shop__wall">
+                    <h3>Pared</h3>
+                    <a href="/product/gallery/pared"><img src="/img/pared.jpg" alt="Lámparas de pared" id="wall"></a>
+                </article>
+                <article class="shop__floor">
+                    <h3>Pie</h3>
+                    <a href="/product/gallery/pie"><img src="/img/pie.jpeg" alt="Lámparas de pie" id="floor"></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="info">
+            <article class="info__items">
+                <img src="https://www.svgrepo.com/show/6460/truck.svg" alt="envío" id="ship">
+                <p>Envíos <strong>GRATIS</strong> a todo el país <br> en compras superiores a $10.000</p>
+            </article>
+            <article class="info__items">
+                <img src="https://www.svgrepo.com/show/410173/card-3.svg" alt="pago" id="pay">
+                <p>10% OFF por transferencia. <br> 3 y 6 cuotas <strong>sin interés</strong> en <br> todos los bancos</p>
+            </article>
+            <article class="info__items">
+                <img src="https://www.svgrepo.com/show/347646/whatsapp.svg" alt="pedido por whatsapp" id="shop-wa">
+                <p>Hacé tu pedido por <br> <strong>WhatsApp!</strong></p>
+            </article>
+        </section>
+        
+        <section class="products">
+            <span><h2>Productos destacados</h2></span>
+            
+            <article class="see">
+                <% for( let i = 0; i < products.length; i++ ) { %>
+                    <div class="see__dest">
+                        <a href="/product/detail/<%= products[i].id %>">
+                            <article class="img">
+                                <img src="/img/<%= products[i].images[0].url %>" alt="Producto destacado" class="dest">
+                                <!-- <img src="/img/<%= products[i].images[1].url %>" alt="Producto destacado" class="dest_b none"> -->
+                            </article>
+                            
+
+                            <p class="product_name">
+                                <%= products[i].name %><br>
+                                <!-- Si el producto tiene descuento % -->
+                                <% if (products[i].discount > 0) { %>
+                                    <p class="see_price_lt">
+                                        $<%= products[i].price %>
+                                    </p>
+                                    <p class="see_price_final">
+                                        $<%= products[i].price - (products[i].discount * products[i].price / 100) %>
+                                    </p>
+                                <% } else { %>
+                                    <!-- Si no tiene descuento -->
+                                    <p class="see_price">
+                                       <strong>$<%= products[i].price %></strong>
+                                    </p>
+                                <% } %>
+                            </p>
+                        </a>
+                    </div>
+                <% } %>
+            </article>            
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <%- include('./partials/footer') %>
+</body>
+</html>

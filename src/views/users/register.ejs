@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('../partials/head') %>
+<body>
+
+    <!--HEADER-->
+
+    <%- include('../partials/header') %>
+
+    <!--MAIN-->
+
+    <main class="background-main-form">
+        
+        <section class="main-form">
+            <p>Crear cuenta</p>
+            <h3>Comprá más rápido y llevá el control de tus pedidos!</h3>
+            <div class="errors">
+                <ul>
+                    
+                </ul>
+            </div>
+            <form action="/user/register" method="post" class="form" enctype="multipart/form-data">
+                <section class="register">
+                    <input type="text" class="validate" name="first_name" id="firstName"  placeholder = "Nombre" value= "<%= locals.old && old.firstName ? old.firstName : '' %>">
+                    <% if ( locals.error && error.first_name ){ %>
+                        <p class="errorMsg"><%= error.first_name.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <input type="text" class="validate" name="last_name" id="lastName"  placeholder = "Apellido" value= "<%= locals.old && old.lastName ? old.lastName : '' %>">
+                    <% if ( locals.error && error.last_name ){ %>
+                        <p class="errorMsg"><%= error.last_name.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <input type="text" class="validate" name="email" id="email"  placeholder = "Email" value= "<%= locals.old && old.email ? old.email : '' %>">
+                    <% if ( locals.error && error.email ){ %>
+                        <p class="errorMsg"><%= error.email.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">  
+                    <input type="text" class="validate" name="phone" id="phone" placeholder = "Teléfono" value= "<%= locals.old && old.phone ? old.phone : '' %>">
+                    <% if ( locals.error && error.phone ){ %>
+                        <p class="errorMsg"><%= error.phone.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <input type="password" class="validate" name="password" id="password" placeholder = "Contraseña" >
+                    <% if ( locals.error && error.password ){ %>
+                        <p class="errorMsg"><%= error.password.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <input type="password" class="validate" name="confirm_password" id="confirm_password"  placeholder = "Confirmar contraseña" >
+                    <% if ( locals.error && error.password ){ %>
+                        <p class="errorMsg"><%= error.password.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <label class="form-title">Imagen de perfil</label>
+                    <input type="file" name="img" id="img" accept=".jpg, .jpeg, .png .gif" multiple >
+                    <% if ( locals.error && error.img ){ %>
+                        <p class="errorMsg"><%= error.img.msg %></p>
+                    <% } %>
+                </section>
+                <section class="confirm">
+                    <section class="g-recaptcha" data-sitekey="6LcePAATAAAAAGPRWgx90814DTjgt5sXnNbV5WaW"></section>
+                    <button type="submit"><p>Crear cuenta</p></button>
+                </section>
+                </form>
+        </section>
+    </main>
+
+    <script src="/js/register.js"></script>
+    <!--FOOTER-->
+
+    <%- include('../partials/footer') %>
+    
+</body>
+</html>

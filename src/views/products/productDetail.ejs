@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <section class="preview">
+                    <p class="detail_product_name1">
+                        <%= product.name %>
+                    </p>
+                    <!-- <p>Lámpara de <%= product.category %></p> -->
+                                     
+                    <article class="preview__img">
+                        <% if(product.images.length > 1) { %>
+                        <div class="carousel">
+                            <div class="item_carousel" id="itemCarousel1">
+                                <div class="carousel_img" id="img1">
+                                    <img src="\img\<%= product.images[0].url %>" alt="Producto" class="preview__img__img">
+                                </div>
+                                <div class="carousel_arrows">
+                                    <a href="#itemCarousel2">
+                                        <i class="fa-solid fa-angle-left"></i>
+                                    </a>
+                                    <a href="#itemCarousel2">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+    
+                            <div class="item_carousel" id="itemCarousel2">
+                                <div class="carousel_img" id="img2">
+                                    <img src="\img\<%= product.images[1].url %>" alt="Producto" class="preview__img__img">
+                                </div>
+                                <div class="carousel_arrows">
+                                    <a href="#itemCarousel1">
+                                        <i class="fa-solid fa-angle-left"></i>
+                                    </a>
+                                    <a href="#itemCarousel1">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dots">
+                            <a href="#itemCarousel1"><p>°</p></a>
+                            <a href="#itemCarousel2">°</a>
+                        </div>
+                        <% } else { %>
+                            <div class="item_carousel" id="itemCarousel1">
+                                <div class="carousel_img" id="img1">
+                                    <img src="\img\<%= product.images[0].url %>" alt="Producto" class="preview__img__img">
+                                </div>
+                            </div>
+                        <% } %>
+
+
+                    </article>
+                    <div class="preview__txt">
+                        <p class="detail_product_name2">
+                            <%= product.name %>
+                        </p>
+                        <!-- Si el producto tiene descuento % -->
+                        <% if (product.discount > 0) { %>
+                            <p class="detail_product_price_lt">
+                                $<%= product.price %>
+                            </p>
+                            <p class="detail_product_price_final">
+                                $<%= product.price - (product.discount * product.price / 100) %>
+                            </p>
+                        <p class="detail_product_disc">
+                            Aprovechá la promoción!
+                        </p>
+                        <p class="detail_product_disc_percent">
+                            <%= product.discount %>% free
+                        </p>
+                        <% } else { %>
+                            <!-- Si no tiene descuento -->
+                            <p class="detail_product_price">
+                                $<%= product.price %>
+                            </p>
+                        <% } %>
+                        <p class="stock">Cantidad: <input type="number" class="cant" name="cant" value="1"></p>
+                        <section class="stock_max">
+                            <p class="stock">Stock disponible: </p>
+                            <p class="stock max"> <%= product.stock %></p>
+                        </section>
+                        <form action="/user/addproduct/<%= product.id %>" method="post" class="form">
+                            <button type="submit" class="agregarcarrito" value=<%= product.id %>>Agregar al carrito</button>
+                        </form>
+                            <p class="stock error"></p>
+                            <% if(locals.userLogged && userLogged.admin) {%>
+                                <a href="/admin/product/edit/<%- product.id %>"><button type="button" class="button_admin">Editar</button></a>
+                                <a href="/admin/product/delete/<%- product.id %>"><button type="button" class="button_admin">Eliminar</button></a>
+                            <% } %>
+                       
+                    </div>
+                   
+                    <p> &nbsp </p>
+                </section>
+                <section class="Desc-articulo">
+                    <h3 class="Desc-titulo">Características</h3>
+                    <p class="Desc-producto">
+                        <%= product.description %>
+                    </p>
+                </section>
+                    <section class="products">
+                        <span><h2>Productos relacionados</h2></span>
+                        <article class="see">
+                            <% for( let i=0; i < products.length; i++ ) { %>
+                                <article class="see__dest">
+                                    <a href="/product/detail/<%= products[i].id %>">
+                                        <img src="/img/<%= products[i].images[0].url %>" alt="Producto destacado" class="dest">
+                                        <p class="product_name">
+                                            <%= products[i].name %><br>
+                                            <!-- Si el producto tiene descuento % -->
+                                            <% if (products[i].discount > 0) { %>
+                                                <p class="see_price_lt">
+                                                    $<%= products[i].price %>
+                                                </p>
+                                                <p class="see_price_final">
+                                                    $<%= products[i].price - (products[i].discount * products[i].price / 100) %>
+                                                </p>
+                                            <% } else { %>
+                                                <!-- Si no tiene descuento -->
+                                                <p class="see_price">
+                                                   <strong>$<%= products[i].price %></strong>
+                                                </p>
+                                            <% } %>
+                                        </p>
+                                    </a>
+                                </article>
+                            <% } %>
+                        </article>
+                    </section>
+            </main>
+
+            <script src="/js/productDetail.js"></script>
+            
+            <%- include('../partials/footer') %>
+    </body>
+
+</html>

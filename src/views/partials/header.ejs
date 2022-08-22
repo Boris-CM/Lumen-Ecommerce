@@ -1,0 +1,47 @@
+<header class="home">
+    <section class="home__bar">
+        <nav class="bar__menu-search">
+            <button type="button"><i class="fa-solid fa-bars" id="menu">
+                <section class="menu-dd">
+                    <nav>
+                        <a href="/">Inicio</a>
+                        <a href="/product/gallery/techo">Techo</a>
+                        <a href="/product/gallery/pared">Pared</a>
+                        <a href="/product/gallery/pie">Pie</a>
+                        <a href="/product/gallery">Productos</a>
+                        <a href="#contact">Contacto</a>
+                        <a href="#us">Nosotros</a>
+                    </nav>
+                </section>
+            </i></button>
+             <!-- Prox. mejora: -->
+            <a href="#"><button type="button"><i class="fa-solid fa-magnifying-glass" id="search">
+                <section class="search_form">
+                    <form action="/product/search" method="POST">
+                        <input type="search" class="input_search" name="search" placeholder="Buscar producto...">
+                    </form>
+                </section>
+            </i></button></a>
+        </nav>
+        <div class="bar__logo">
+            <a href="/"><img src="/img/LUMEN.png" alt="Logo" id="logo"></a>
+        </div>
+        <nav class="bar__login-buy">
+            <article class="bar_login">
+            <% if (locals.userLogged) { %>
+                <a href="/user/profile"><i class="fa-solid fa-user" id="login"></i></a>
+                <a href="/user/profile" class="login_msg"><p>Hola, <%= userLogged.first_name %>!</p></a>
+            <% } else { %>
+            <a href="/user/login"><i class="fa-solid fa-user" id="login"></i></a>
+            <% } %> 
+            </article>
+            <a href="/cart"><i class="fa-solid fa-cart-shopping" id="buy"></i></a>
+        </nav>
+    </section>
+
+    <section class="contact">
+        <a href="https://web.whatsapp.com/" target="_blank">
+        <button id="wafixed"><i class="fa-brands fa-whatsapp"></i>Contáctanos</button></a>
+    </section>
+    <script src="/js/header.js"></script>
+</header>

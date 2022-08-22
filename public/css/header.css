@@ -1,0 +1,266 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 18px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.home {
+    width: 100%;
+}
+
+/* Barra */
+.home__bar {
+    align-items: center;
+    background-color: #1f1d1d;
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+}
+
+.bar__menu-search,
+.bar__login-buy {
+    background-color: #1f1d1d;
+    display: flex;
+}
+.bar_login a {
+    color: #E79F00;
+    font-size: 10px;
+    text-decoration: none;
+}
+.login_msg {
+    position: relative;
+    top: -1px;
+    left: 0px;
+}
+
+.bar__menu-search button {
+    background-color: #1f1d1d;
+    border: 0px;
+    cursor: pointer;
+}
+
+#menu,
+#search,
+#login,
+#buy {
+    background-color: #1f1d1d;
+    color: white;
+    font-size: 15px;
+    margin: 20px;
+    padding: 5px;
+}
+
+#login {
+    margin-bottom: 0px;
+}
+
+.menu-dd {
+    background-color: black;
+    border: solid 1px white;
+    display: none;
+    width: 25%;
+    opacity: 0.6;
+    position: fixed;
+    top: 64px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+.menu-dd a {
+    border: solid 1px white;
+    font-size: 80%;
+    color: white;
+    display: block;
+    padding: 20% 5%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.input_search {
+    border: solid 1px #666666;
+    height: 20px;
+    opacity: 0.6;
+    padding: 1px;
+    width: 170px;
+}
+.search_form {
+    position: fixed;
+    top: 64px;
+    left: 1px;
+    transition: all 0.3s ease;
+    display: none;
+}
+
+.block {
+    display: block;
+    position: fixed;
+}
+
+
+.bar__logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logo {
+    height: 36px;
+    width: 100%;
+    padding: 5px;
+}
+
+/* whatsapp fijo */
+.contact {
+    display: flex;
+    margin-left: 87%;
+}
+
+#wafixed {
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 3px 2px 5px #666666;
+    color: white;
+    font-size: small;
+    font-weight: 300;
+    height: 30px;
+    width: 110px;
+    position: fixed;
+    top: 92%;
+    right: 4%;
+    z-index: 1;
+}
+
+#wafixed i {
+    color: white;
+    font-size: 12px;
+    padding: 2px;
+    padding-right: 5%;
+}
+
+/* BREAKPOINTS */
+/* TABLET */
+@media (min-width: 481px) {
+    .home__bar {
+        height: 93px;
+        position: fixed;
+        z-index: 2;
+    }
+    .menu-dd {
+        position: fixed;
+        top: 94px;
+        left: 0px;
+    }
+    .menu-dd a {
+        border: solid 1px white;
+        font-size: 18px;
+        padding: 25px 20px;
+    }
+    #menu,
+    #search,
+    #login,
+    #buy {
+        font-size: 20px;
+        margin: 20px;
+        padding: 8px;
+    }
+    #logo {
+        height: 55px;
+        width: 100%;
+        padding: 5px;
+    }
+    .bar__login-buy,
+    .bar_login {
+    display: flex;
+    align-items: center;
+    }
+
+    .bar_login {
+        height: 93px;
+        flex-direction: column;   
+    }
+    .bar_login a {
+        font-size: 12px;
+    }
+    
+    .login_msg {
+        position: relative;
+        top: -13px;
+        left: 0px;
+    }
+    #login {
+        position: relative;
+        top: 9px;
+        left: 0px;
+    }
+
+    #wafixed {
+    font-size: small;
+    height: 30px;
+    width: 120px;
+    }
+    #wafixed i {
+    font-size: 14px;
+    padding: 5px;
+    }
+}
+
+    /* DESKTOP */
+@media (min-width: 769px) {
+    .menu-dd a {
+        border: solid 1px white;
+        font-size: 20px;
+        padding: 32px 15px;
+    }
+    #menu,
+    #search,
+    #login,
+    #buy {
+        font-size: 25px;
+        margin: 22px;
+        padding: 10px;
+    }
+    #menu:hover,
+    #search:hover,
+    #login:hover,
+    #buy:hover {
+        text-shadow: -3px -3px 10px #E79F00;
+    }
+    /* .search_command {
+        display: flex;
+    } */
+    
+    #logo {
+        height: 75px;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .bar_login a {
+        font-size: 14px;
+    }
+    
+    .login_msg {
+        position: relative;
+        top: -22px;
+        left: 0px;
+    }
+    #login {
+        position: relative;
+        top: 3px;
+        left: 0px;
+    }
+    #wafixed {
+    cursor: pointer;
+    font-size: medium;
+    font-weight: 400;
+    height: 40px;
+    width: 150px;
+    }
+    #wafixed:hover {
+    box-shadow: -3px -3px 10px #E79F00;
+    }
+    #wafixed i {
+    font-size: 20px;
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <body>
+
+        <!--HEADER-->
+
+        <%- include('../partials/header') %>
+
+            <!--MAIN-->
+
+            <main class="background-main-form">
+                <section class="main-form">
+                    <p>Editar usuario</p>
+                    <div class="errors">
+                        <ul>
+                            
+                        </ul>
+                    </div>
+                    <form action="/user/edit?_method=PUT" method="post" class="form" enctype="multipart/form-data">
+                        <section class="register">
+                            <input type="text" class="validate" name="first_name" id="firstName" value="<%= locals.error && error.first_name ? error.first_name.value : userLogged.first_name %>" >
+                            <% if ( locals.error && error.first_name ){ %>
+                                <p class="errorMsg"><%= error.first_name.msg %></p>
+                            <% } %>
+                        </section>
+                        <section class="register">
+                            <input type="text" class="validate" name="last_name" id="lastName" value="<%= locals.error && error.last_name ? error.last_name.valuelast_name : userLogged.last_name %>">
+                            <% if ( locals.error && error.last_name ){ %>
+                                <p class="errorMsg"><%= error.last_name.msg %></p>
+                            <% } %>
+                        </section>
+                        <section class="register">
+                            <input type="email" class="validate" name="email" id="email" value="<%= locals.error && error.email ? error.email.value : userLogged.email %>">
+                            <% if ( locals.error && error.email ){ %>
+                                <p class="errorMsg"><%= error.email.msg %></p>
+                            <% } %>
+                        </section>
+                        <section class="register">
+                            <input type="tel" class="validate" name="phone" id="phone" value="<%= locals.error && error.phone ? error.phone.value : userLogged.phone %>">
+                            <% if ( locals.error && error.phone ){ %>
+                                <p class="errorMsg"><%= error.phone.msg %></p>
+                            <% } %>
+                        </section>
+                        <section class="register">
+                            <input type="password" class="validate" name="password" id="password" placeholder="Ingresa tu contraseña">
+                            <% if ( locals.error && error.password ){ %>
+                                <p class="errorMsg"><%= error.password.msg %></p>
+                            <% } %>
+                        </section>
+                        <section class="register">
+                            <input type="password" class="validate" name="confirm_password" id="confirm_password" placeholder="Confirmar contraseña" >
+                            <% if ( locals.error && error.password ){ %>
+                                <p class="errorMsg"><%= error.password.msg %></p>
+                            <% } %>
+                        </section>
+                        <section class="register">
+                            <label class="form-title">Imagen de perfil</label>
+                            <section class="img">
+                                <img src="/img/users/<%= userLogged.img %>" width="100%">
+                            </section>
+                            <input type="file" name="img" id="img" accept=".jpg, .jpeg, .png .gif" multiple>
+                            <% if ( locals.error && error.img ){ %>
+                                <p class="errorMsg"><%= error.img.msg %></p>
+                            <% } %>
+                        </section>
+                        <section class="confirm">
+                            <button type="button" class="confirm_cancel">
+                                <a href="/user/profile"><p class="button_text">Cancelar</p></a>
+                            </button>
+                            <button type="submit" class="confirm_confirm">
+                                <p class="button_text">Confirmar</p>
+                            </button>
+                            <button type="submit" class="deleteButton">
+                                <a href="/user/delete" class="form">
+                                <p>Eliminar cuenta</p></a>
+                            </button>
+                        </section>
+                    </form>
+                </section>
+            </main>
+
+            <script src="/js/register.js"></script>
+
+
+            <!--FOOTER-->
+
+            <%- include('../partials/footer') %>
+
+    </body>
+
+</html>

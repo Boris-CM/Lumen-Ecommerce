@@ -1,0 +1,129 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 18px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.footer {
+    background-color: #918c8c;
+    color: white;
+    display: flex;
+    width: inherit;
+    padding: 10px;
+    flex-direction: column;
+}
+.footer section {
+    text-align: center;
+}
+
+#f-logo {
+    display: none;
+}
+
+.footer p {
+    color: #ffffffe1;
+    font-size: 11px;
+    padding-top: 10%;
+}
+
+.footer h3 {
+    font-size: 14px;
+    padding: 10px 0px;
+}
+
+.footer li {
+    font-size: 11px;
+    list-style: none;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+}
+
+.footer__red {
+    margin-top: 5px;
+}
+
+#wa,
+#fb,
+#ig {
+    color: white;
+    font-size: 25px;
+    padding: 0px 10px;
+}
+
+/* BREAKPOINTS */
+/* TABLETS */
+@media (min-width: 481px) {
+    .footer p {
+        font-size: 12px;
+    }
+    .footer h3 {
+        font-size: 15px;
+    }
+    .footer li {
+        font-size: 12px;
+    }
+    .footer a {
+        font-size: 12px;
+    }
+    #wa,
+    #fb,
+    #ig {
+        padding: 0px 12px;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 769px) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 180px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        }
+    .footer section {
+        margin: 0px;
+    }
+        #f-logo {
+        display: block;
+        height: 75px;
+        width: 100%;
+        margin: 35px 1px;
+        }
+        .footer p {
+        align-self: flex-end;
+        font-size: 12px;
+        margin-left: -370px;
+        padding: 0px;
+        }
+        .footer h3 {
+        padding: 10px 0px;
+        }
+        .footer li {
+        font-size: 13px;    
+        line-height: 22px;
+        }
+        .footer a {
+        font-size: 13px;
+        line-height: 22px;
+        }
+        .social {
+        display: flex;
+        justify-content: space-around;
+        }
+        #wa,
+        #fb,
+        #ig {
+        font-size: 28px;
+        }
+    }

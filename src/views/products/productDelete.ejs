@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head.ejs') %>
+
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <h2 class="title">¿Estás seguro?</h2>
+        <section class="framework">
+            <!-- <article class="text" id="product_name1">
+                <h3 class="category">Nombre: </h3>
+                <p class="value"><%= product.name %></p>
+            </article> -->
+            <article class="framework_img">
+                <img src="\img\<%= product.images[0].url %>" alt="Luces" class="framework_img_img">
+            </article>
+            <article>
+                <section class="text" id="product_name2">
+                    <p class="category">Nombre:</p>
+                    <p class="value"><%= product.name %></p>
+                </section>
+                <section class="text">
+                    <p class="category">Precio:</p>
+                    <p class="value"> $<%= product.price %></p>
+                </section>
+                <section class="text">
+                    <p class="category">Categoría:</p>
+                    <p class="value"> <%= product.category %></p>
+                </section>
+                <section>
+                    <h3 class="Desc-titulo">Características:</h3>
+                    <p class="Desc-producto"><%= product.description %></p>
+                    
+                </section>    
+            </article>
+        </section>
+        <section class="confirm">
+            <a href="/product/gallery"><button class="back_button"><p>Cancelar</p></button></a>
+            <form action="/admin/product/delete/<%= product.id %>?_method=DELETE" method="POST">
+                    <button class="delete_button"><p>Deshabilitar</p></button>
+            </form>
+            <form action="/admin/product/delete/<%= product.id %>?_method=DELETE" method="POST">
+                    <button class="delete_button"><p>Borrar</p></button>
+            </form>
+        </section>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>
+<!-- 
+<form action="/admin/product/setstate/<%= products[i].id %>?_method=PUT" method="POST">
+    <% if(products[i].state) {%>
+        <button class="back_button"><p>Deshabilitar</p></button>
+    <% } else {%>
+        <button class="back_button"><p>Habilitar</p></button>
+    <% } %>
+</form> -->

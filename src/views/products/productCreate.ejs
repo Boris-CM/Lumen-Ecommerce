@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('../partials/head') %>
+<body>
+
+    <!--HEADER-->
+
+    <%- include('../partials/header') %>
+
+    <!--MAIN-->
+
+    <main class="background-main-form">
+        <section class="main-form">
+            <p>Crear producto</p>
+            
+            <form action="/admin/product/create" method="post" class="form" enctype="multipart/form-data">
+                <div class="errors">
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <section class="register">
+                    <label class="form-title">Nombre del producto</label>
+                    <input type="text" class="validate" name="name" id="name" placeholder = "Nombre del producto (escribir en MAYÚSCULA. Ej. GRECIA)" value="<%= locals.old && old.name ? old.name : '' %>">
+                    <% if ( locals.error && error.name ){ %>
+                        <p class="errorMsg"><%= error.name.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <label class="form-title">Descripción del producto</label>
+                    <textarea name="description" id="description" rows="4" cols="50" placeholder = "Descripción del producto (separar cada características con un . )" value="<%= locals.old && old.description ? old.description : '' %>"></textarea>
+                    <% if ( locals.error && error.description ){ %>
+                        <p class="errorMsg"><%= error.description.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <label class="form-title">Foto del producto</label>
+                    <input type="file" name="img" accept=".jpg, .jpeg, .png .mp4" multiple id="img">
+                    <% if ( locals.error && error.img ){ %>
+                        <p class="errorMsg"><%= error.img.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <label class="form-title">Categoría</label>
+                    <div class="register-radio">
+                        <input type="radio" name="category" value="techo" <%=  locals.old && old.category == 'techo' ? 'checked' : ''; %>>
+                        <label>Techo</label>
+                    </div>
+                    <div class="register-radio">
+                        <input type="radio" name="category" value="pared" <%=  locals.old && old.category == 'pared' ? 'checked' : ''; %>>
+                        <label>Pared</label>
+                    </div>
+                    <div class="register-radio">
+                        <input type="radio" name="category" value="pie" <%=  locals.old && old.category == 'pie' ? 'checked' : ''; %>>
+                        <label>Pie</label>
+                    </div>
+                </section>
+                <section class="register">
+                    <label class="form-title">Color</label>
+                    <input type="text" class="validate" name="color"  placeholder = "Color" value="<%= locals.old && old.color ? old.color : '' %>">
+                </section>
+                <section class="register">
+                    <label class="form-title">Precio</label>
+                    <input type="number" class="validate" name="price"  placeholder = "Precio" value="<%= locals.old && old.price ? old.price : '' %>">
+                </section>
+                <section class="register">
+                    <label class="form-title">Descuento</label>
+                    <input type="number" class="validate" name="discount"  placeholder = "Descuento" value="<%= locals.old && old.discount ? old.discount : '' %>">
+                </section>
+                <section class="register">
+                    <label class="form-title">Stock</label>
+                    <input type="number" class="validate" name="stock"  placeholder = "stock" value="<%= locals.old && old.stock ? old.stock : '' %>">
+                </section>
+                <section class="confirm">
+                    <button type="reset"><p>Borrar</p></button>
+                    <button type="submit"><p>Finalizar</p></button>
+                </section>
+            </form>
+        </section>
+    </main>
+
+    <script src="/js/productCreate.js"></script>
+
+    <!--FOOTER-->
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

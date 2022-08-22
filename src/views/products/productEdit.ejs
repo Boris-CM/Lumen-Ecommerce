@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('../partials/head') %>
+<body>
+
+    <!--HEADER-->
+
+    <%- include('../partials/header') %>
+
+    <!--MAIN-->
+
+    <main class="background-main-form">
+        <section class="main-form">
+            <p>Editar producto</p>
+
+            <form action="/admin/product/edit/<%= product.id %>?_method=PUT" method="post" class="form" enctype="multipart/form-data">
+                <div class="errors">
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <section class="register">
+                    <label class="form-title">Nombre del producto</label>
+                    <input type="text" class="validate" name="name" id="name" value = "<%= locals.old && old.name ? old.name : product.name %>">
+                    <% if ( locals.error && error.name ){ %>
+                        <p class="errorMsg"><%= error.name.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <label class="form-title">Descripcion del producto (separar cada características con un . )</label>
+                    <textarea name="description" id="description" rows="4" cols="50"><%= locals.old && old.description ? old.description : product.description %></textarea>
+                    <% if ( locals.error && error.description ){ %>
+                        <p class="errorMsg"><%= error.description.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <label class="form-title">Foto del producto</label>
+                    <section class="img">
+                        <img src="\img\<%= product.images[0].url %>" width="100%" id="img">
+                    </section>
+                    <input type="file" name="img" id="img" accept=".jpg, .jpeg, .png .mp4" multiple>
+                    <% if ( locals.error && error.img ){ %>
+                        <p class="errorMsg"><%= error.img.msg %></p>
+                    <% } %>
+                </section>
+                <section class="register">
+                    <label class="form-title">Categoria</label>
+                    <div class="register-radio">
+                        <input type="radio" name="category" value="techo" <%= locals.old && old.category ? (old.category == 'techo' ? 'checked' : '') : (product.category == 'techo' ? 'checked' : '') %> >
+                        <label>Techo</label>
+                    </div>
+                    <div class="register-radio">
+                        <input type="radio" name="category" value="pared" <%= locals.old && old.category ? (old.category == 'pared' ? 'checked' : '') : (product.category == 'pared' ? 'checked' : '') %> >
+                        <label>Pared</label>
+                    </div>
+                    <div class="register-radio">
+                        <input type="radio" name="category" value="pie" <%= locals.old && old.category ? (old.category == 'pie' ? 'checked' : '') : (product.category == 'pie' ? 'checked' : '') %> >
+                        <label>Pie</label>
+                    </div>
+                </section>
+                <section class="register">
+                    <label class="form-title">Color</label>
+                    <input type="text" class="validate" name="color" value = "<%= locals.old && old.color ? old.color : product.color %>">
+                </section>
+                <section class="register">
+                    <label class="form-title">Precio</label>
+                        <input type="number" class="validate" name="price" value = "<%= locals.old && old.price ? old.price : product.price %>">
+                </section>
+                    <section class="register">
+                    <label class="form-title">Descuento</label>
+                    <input type="number" class="validate" name="discount"  placeholder = "Descuento" value = "<%= locals.old && old.discount ? old.discount : product.discount %>">
+                </section>
+                <section class="register">
+                    <label class="form-title">Stock</label>
+                    <input type="number" class="validate" name="stock" value = "<%= locals.old && old.stock ? old.stock : product.stock %>">
+                </section>
+                <section class="confirm">
+                    <button type="button"><a href="/product/gallery"><p class="button_text">Cancelar</p></a></button>
+                    <button type="submit"><p class="button_text">Confirmar</p></button>
+                </section>
+            </form>
+            
+            <section class="form">
+                <a href="/admin/product/delete/<%= product.id %>"><button type="submit" class="deleteButton"><p>Eliminar producto</p></button></a>
+            </section>
+        </section>
+    </main>
+
+    <script src="/js/productEdit.js"></script>
+
+    <!--FOOTER-->
+
+    <%- include('../partials/footer') %>
+    
+</body>
+</html>
