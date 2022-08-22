@@ -18,7 +18,10 @@ const usersController = {
                     state: { [db.Sequelize.Op.eq] : 1 }
                 }
             })
-            .catch(error => res.send(error));
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });
             
             if(user && user.dataValues.email == req.body.email && bcrypt.compareSync(req.body.password, user.dataValues.password)){
                 let userLogin = {};
@@ -70,7 +73,10 @@ const usersController = {
             let user = await db.User.findOne({ 
                 where: { email: req.body.email } 
             })
-            .catch(error => res.send(error));
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });
             if(user){
                 errors.errors.push({msg: 'Este email ya está registrado.', param:'email'})
             }
@@ -101,7 +107,10 @@ const usersController = {
             .then(user => {
                 res.redirect('/user/login');
             })
-            .catch(error => res.send(error));
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });
         }
         res.render('./users/register', { 
             id: 'register', 
@@ -131,7 +140,10 @@ const usersController = {
             
             //Pido los datos del usuario que voy a modificar
             let user_old = await db.User.findByPk(req.session.userLogged.id)
-            .catch(error => res.send(error));
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });
             //Creo un objeto literal para almacenar los cambios
             let newUser = {};
             //Comparo los datos del formulario con los viejos datos del usuario
@@ -165,7 +177,10 @@ const usersController = {
                 }
                 res.redirect('/user/profile');
             })
-            .catch(error => res.send(error));
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });
 
         }
         res.render('./users/userEdit', { 
@@ -197,7 +212,10 @@ const usersController = {
             res.clearCookie('rememberEmail');
             res.redirect('/');
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
         
     },
 

@@ -34,7 +34,10 @@ module.exports = productController = {
                 products: products 
             });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     //Categorías
@@ -56,7 +59,10 @@ module.exports = productController = {
                 products: products
             });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     //Galería completa
@@ -72,7 +78,10 @@ module.exports = productController = {
                 products: products 
             });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     //Búsqueda por NOMBRE
@@ -94,7 +103,10 @@ module.exports = productController = {
                 search: 1
             });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     }
     
 }

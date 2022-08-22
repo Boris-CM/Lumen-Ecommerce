@@ -16,7 +16,10 @@ const adminController = {
                 user: user
             });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     updateUser: async (req, res) => {
@@ -28,7 +31,10 @@ const adminController = {
         if (errors.isEmpty()) {
             //Pido los datos del usuario que voy a modificar
             let user_old = await db.User.findByPk(req.params.id)
-            .catch(error => res.send(error));
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });
             //Creo un objeto literal para almacenar los cambios
             let newUser = {};
             //Comparo los datos del formulario con los viejos datos del usuario
@@ -56,7 +62,10 @@ const adminController = {
             .then(user => {
                 res.redirect('/admin/user/list');
             })
-            .catch(error => res.send(error));
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });
         }
         await db.User.findByPk(req.params.id)
         .then(user => {
@@ -67,7 +76,10 @@ const adminController = {
                 error: errors.mapped()
             });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
         
     },
 
@@ -81,7 +93,10 @@ const adminController = {
                 user: user 
             });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     destroyUser: async (req, res) => {
@@ -96,7 +111,10 @@ const adminController = {
         .then(user => {
             res.redirect('/admin/user/list');
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     //Lista completa
@@ -110,7 +128,10 @@ const adminController = {
         .then(users => {
             res.render('./admin/list', { id: 'list', title: 'LUMEN - Lista de usuarios', users: users });
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     //Dar/Quitar perfil de ADMIN
@@ -127,9 +148,15 @@ const adminController = {
             .then(user => {
                 res.redirect('/admin/user/list');
             })
-            .catch(error => res.send(error));         
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });         
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
     //Cambio de estado: Habilita/Deshabilita
@@ -146,9 +173,15 @@ const adminController = {
             .then(user => {
                 res.redirect('/admin/user/list');
             })
-            .catch(error => res.send(error));         
+            .catch(error => {
+                console.log(error);
+                res.redirect('/error');
+            });         
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
     },
 
 
@@ -172,7 +205,10 @@ const adminController = {
         let user = await db.User.findOne({ 
             where: { email: req.body.name } 
         })
-        .catch(error => res.send(error));
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
+        });
         if(user){
             errors.errors.push({msg: 'Este nombre ya está registrado.', param:'name'})
         }
@@ -197,6 +233,7 @@ const adminController = {
                 }
             } catch (error) {
                 console.log(error);
+                res.redirect('/error');
             }
         }
         res.render('./products/productCreate', { 
@@ -216,7 +253,11 @@ const adminController = {
                 title: 'LUMEN - Edición de producto', 
                 product: product 
             });
-        });
+        })
+        .catch(error => { 
+            console.log(error);
+            res.redirect('/error');
+        })
     },
 
     update: async (req, res) => {
@@ -229,7 +270,10 @@ const adminController = {
         let user = await db.User.findOne({ 
             where: { email: req.body.name } 
         })
-        .catch(error => res.send(error));
+        .catch(error => { 
+            console.log(error);
+            res.redirect('/error');
+        })
         if(user){
             errors.errors.push({msg: 'Este nombre ya está registrado.', param:'name'})
         }
@@ -253,12 +297,18 @@ const adminController = {
                     .then(images =>{
                         res.redirect('/product/detail/' + req.params.id);
                     })
-                    .catch(error => res.send(error));
+                    .catch(error => { 
+                        console.log(error);
+                        res.redirect('/error');
+                    })
                 }else{
                     res.redirect('/product/detail/' + req.params.id);
                 }
             })
-            .catch(error => res.send(error));
+            .catch(error => { 
+                console.log(error);
+                res.redirect('/error');
+            })
         }
         let old = req.body;
         old.id = req.params.id;
@@ -278,7 +328,10 @@ const adminController = {
             old: old 
         });
         })
-        .catch(error => res.send(error));
+        .catch(error => { 
+            console.log(error);
+            res.redirect('/error');
+        })
     },
 
     result: (req, res) => {
@@ -301,7 +354,11 @@ const adminController = {
                 title: 'LUMEN - Eliminar producto', 
                 product: product 
             });
-        }).catch(error => res.send(error));
+        })
+        .catch(error => { 
+            console.log(error);
+            res.redirect('/error');
+        })
     },
 
     destroy: async (req, res) => {
@@ -354,7 +411,10 @@ const adminController = {
             })
             .catch(error => res.send(error));         
         })
-        .catch(error => res.send(error));
+        .catch(error => { 
+            console.log(error);
+            res.redirect('/error');
+        })
     },
 
 }

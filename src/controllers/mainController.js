@@ -10,6 +10,10 @@ const mainController = {
         })
         .then(function(products){
             res.render('home', { id: 'home', title: 'LUMEN Lights Shop', products: products });
+        })
+        .catch(error => {
+            console.log(error);
+            res.redirect('/error');
         });
     },
 
