@@ -21,13 +21,13 @@
             </div>
             <form action="/user/register" method="post" class="form" enctype="multipart/form-data">
                 <section class="register">
-                    <input type="text" class="validate" name="first_name" id="firstName"  placeholder = "Nombre" value= "<%= locals.old && old.firstName ? old.firstName : '' %>">
+                    <input type="text" class="validate" name="first_name" id="firstName"  placeholder = "Nombre" value= "<%= locals.old && old.first_name ? old.first_name : '' %>">
                     <% if ( locals.error && error.first_name ){ %>
                         <p class="errorMsg"><%= error.first_name.msg %></p>
                     <% } %>
                 </section>
                 <section class="register">
-                    <input type="text" class="validate" name="last_name" id="lastName"  placeholder = "Apellido" value= "<%= locals.old && old.lastName ? old.lastName : '' %>">
+                    <input type="text" class="validate" name="last_name" id="lastName"  placeholder = "Apellido" value= "<%= locals.old && old.last_name ? old.last_name : '' %>">
                     <% if ( locals.error && error.last_name ){ %>
                         <p class="errorMsg"><%= error.last_name.msg %></p>
                     <% } %>
