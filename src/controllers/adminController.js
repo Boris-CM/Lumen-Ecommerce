@@ -24,6 +24,7 @@ const adminController = {
 
     updateUser: async (req, res) => {
         let errors = validationResult(req);
+        errors.errors = errors.errors.filter(error => {return error.msg != ' '});
         //Si subio una imagen, verifico el tipo de formato
         if(req.file && req.file.filename.search(/jpg$|jpeg$|png$|gif$/m) == -1){
             errors.errors.push({msg: 'Solo formatos JPG, JPEG, PNG o GIF.', param:'img'});
