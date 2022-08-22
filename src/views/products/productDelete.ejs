@@ -37,8 +37,12 @@
         </section>
         <section class="confirm">
             <a href="/product/gallery"><button class="back_button"><p>Cancelar</p></button></a>
-            <form action="/admin/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                    <button class="delete_button"><p>Deshabilitar</p></button>
+            <form action="/admin/product/setstate/<%= product.id %>?_method=PUT" method="POST">
+                <% if(product.state) {%>
+                    <button class="back_button"><p>Deshabilitar</p></button>
+                <% } else {%>
+                    <button class="back_button"><p>Habilitar</p></button>
+                <% } %>
             </form>
             <form action="/admin/product/delete/<%= product.id %>?_method=DELETE" method="POST">
                     <button class="delete_button"><p>Borrar</p></button>
@@ -50,10 +54,4 @@
 
 </html>
 <!-- 
-<form action="/admin/product/setstate/<%= products[i].id %>?_method=PUT" method="POST">
-    <% if(products[i].state) {%>
-        <button class="back_button"><p>Deshabilitar</p></button>
-    <% } else {%>
-        <button class="back_button"><p>Habilitar</p></button>
-    <% } %>
-</form> -->
+ -->
